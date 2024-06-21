@@ -24,7 +24,7 @@ const Cities = () => {
   const [cityData1, setcityData1] = useState(null);
   const [cityData2, setcityData2] = useState(null);
   const [city, setCity] = useState("");
-  const [selectedCityData, setSelectedCityData] = useState(null);
+  const [selectedCityData, setSelectedCityData] = useState("");
 
   const getDayName = (dateStr) => {
     const date = new Date(dateStr);
@@ -373,7 +373,9 @@ const Cities = () => {
                 </div>
 
                 <div className="col-md-4">
-                  {selectedCityData ? (
+                  {selectedCityData &&
+                  selectedCityData.city &&
+                  selectedCityData.list ? (
                     <article className="widget">
                       <div
                         className={`d-flex justify-content-between ${styles.weatherTemp}`}
@@ -382,11 +384,11 @@ const Cities = () => {
                           <h1>{selectedCityData.city.name}</h1>
                           <p style={{ fontSize: "13px" }}>
                             Chance of Rain:{" "}
-                            {(selectedCityData.list[0].pop * 100).toFixed(0)}%
+                            {(selectedCityData.list[0]?.pop * 100).toFixed(0)}%
                           </p>
                           <h2>
                             {(
-                              selectedCityData.list[0].main.temp - 273.15
+                              selectedCityData.list[0]?.main.temp - 273.15
                             ).toFixed(0)}
                             °
                           </h2>
@@ -394,7 +396,7 @@ const Cities = () => {
                         <div>
                           <Image
                             className={`${styles.weathermainicon}`}
-                            src={`https://openweathermap.org/img/wn/${selectedCityData.list[0].weather[0].icon}@2x.png`}
+                            src={`https://openweathermap.org/img/wn/${selectedCityData.list[0]?.weather[0].icon}@2x.png`}
                             alt="weather icon"
                             width={100}
                             height={100}
@@ -407,41 +409,43 @@ const Cities = () => {
                         <div
                           className={`justify-content-between ${styles.forecastweather1}`}
                         >
-                          {getTodaysForecast(selectedCityData.list).map(
-                            (forecast) => {
-                              const date = new Date(forecast.dt_txt);
-                              let hours = date.getHours();
-                              const minutes = date.getMinutes();
-                              const ampm = hours >= 12 ? "PM" : "AM";
-                              hours = hours % 12;
-                              hours = hours ? hours : 12;
-                              const strTime = `${hours}:${
-                                minutes < 10 ? "0" + minutes : minutes
-                              } ${ampm}`;
+                          {selectedCityData.list &&
+                            getTodaysForecast(selectedCityData.list).map(
+                              (forecast) => {
+                                const date = new Date(forecast.dt_txt);
+                                let hours = date.getHours();
+                                const minutes = date.getMinutes();
+                                const ampm = hours >= 12 ? "PM" : "AM";
+                                hours = hours % 12;
+                                hours = hours ? hours : 12;
+                                const strTime = `${hours}:${
+                                  minutes < 10 ? "0" + minutes : minutes
+                                } ${ampm}`;
 
-                              return (
-                                <div
-                                  key={forecast.dt}
-                                  className={`text-center ${styles.daysforecast}`}
-                                >
-                                  <div className={`${styles.forecasttime}`}>
-                                    {strTime}
+                                return (
+                                  <div
+                                    key={forecast.dt}
+                                    className={`text-center ${styles.daysforecast}`}
+                                  >
+                                    <div className={`${styles.forecasttime}`}>
+                                      {strTime}
+                                    </div>
+                                    <div className={`${styles.forecastimage}`}>
+                                      <Image
+                                        src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                                        alt={forecast.weather[0].description}
+                                        width={100}
+                                        height={100}
+                                      />
+                                    </div>
+                                    <div className={`${styles.forecasttemp}`}>
+                                      {(forecast.main.temp - 273.15).toFixed(0)}
+                                      °
+                                    </div>
                                   </div>
-                                  <div className={`${styles.forecastimage}`}>
-                                    <Image
-                                      src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
-                                      alt={forecast.weather[0].description}
-                                      width={100}
-                                      height={100}
-                                    />
-                                  </div>
-                                  <div className={`${styles.forecasttemp}`}>
-                                    {(forecast.main.temp - 273.15).toFixed(0)}°
-                                  </div>
-                                </div>
-                              );
-                            }
-                          )}
+                                );
+                              }
+                            )}
                         </div>
                       </div>
 
@@ -451,34 +455,35 @@ const Cities = () => {
                       >
                         <h3>3-Day Forecast</h3>
                         <div className="justify-content-between">
-                          {getDailyForecasts(selectedCityData.list).map(
-                            (forecast) => (
-                              <div
-                                key={forecast.dt}
-                                className={`d-flex text-center`}
-                                style={{
-                                  borderBottom:
-                                    "1px solid rgba(225, 224, 224, 0.9)",
-                                }}
-                              >
-                                <div className={`${styles.dateforcast}`}>
-                                  {getDayName(forecast.dt_txt.split(" ")[0])}
+                          {selectedCityData.list &&
+                            getDailyForecasts(selectedCityData.list).map(
+                              (forecast) => (
+                                <div
+                                  key={forecast.dt}
+                                  className={`d-flex text-center`}
+                                  style={{
+                                    borderBottom:
+                                      "1px solid rgba(225, 224, 224, 0.9)",
+                                  }}
+                                >
+                                  <div className={`${styles.dateforcast}`}>
+                                    {getDayName(forecast.dt_txt.split(" ")[0])}
+                                  </div>
+                                  <div className={`${styles.forcastdaysimage}`}>
+                                    <Image
+                                      src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                                      alt={forecast.weather[0].description}
+                                      width={100}
+                                      height={100}
+                                    />
+                                    {forecast.weather[0].description}
+                                  </div>
+                                  <div className={`${styles.forecasttemplast}`}>
+                                    {(forecast.main.temp - 273.15).toFixed(0)}°
+                                  </div>
                                 </div>
-                                <div className={`${styles.forcastdaysimage}`}>
-                                  <Image
-                                    src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
-                                    alt={forecast.weather[0].description}
-                                    width={100}
-                                    height={100}
-                                  />
-                                  {forecast.weather[0].description}
-                                </div>
-                                <div className={`${styles.forecasttemplast}`}>
-                                  {(forecast.main.temp - 273.15).toFixed(0)}°
-                                </div>
-                              </div>
-                            )
-                          )}
+                              )
+                            )}
                         </div>
                       </div>
                     </article>
