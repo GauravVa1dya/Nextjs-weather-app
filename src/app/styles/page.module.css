@@ -1,0 +1,224 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
+
+.colmd10 {
+  width: 90.333333% !important;
+}
+
+.main {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+.navbar {
+  background-color: #ebecf0 !important;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 23px !important;
+  overflow: hidden;
+}
+.searchbar {
+  background-color: #ebecf0 !important;
+  border-radius: 10px !important;
+}
+.searchbar[type="text"]:focus {
+  border-color: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+.weatherTemp {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+.weatherTemp h1,
+.weatherTemp h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+.weatherTemp p {
+  line-height: 4px;
+  font-size: 15px;
+  color: #909197;
+  padding-bottom: 30px;
+}
+.todayforecast {
+  background-color: #ebecf0 !important;
+  padding: 15px;
+  padding-left: 24px;
+  padding-top: 20px;
+  border-radius: 23px;
+  width: 100%;
+  margin-top: 15px;
+}
+.todayforecast h3 {
+  color: #909197;
+  font-size: 15px;
+}
+.todayforecast1 {
+  background-color: transparent !important;
+  padding: 15px;
+  padding-top: 20px;
+  width: 100%;
+  margin-top: 15px;
+  border-bottom: 1px solid rgba(225, 224, 224, 0.9);
+  border-top: 1px solid rgba(225, 224, 224, 0.9);
+}
+.todayforecast1 h3 {
+  color: #909197;
+  font-size: 15px;
+}
+.forecasttime {
+  color: #909197;
+  font-size: 15px;
+}
+.daysforecast {
+  border-right: 1px solid rgba(225, 224, 224, 0.9);
+}
+.daysforecast:last-child {
+  border: none; /* Remove border for the last item */
+}
+.forecasttemp {
+  font-size: 18px;
+  font-weight: 600;
+}
+.forecastimage {
+  margin-top: -20px;
+  margin-bottom: -14px;
+}
+.forecastweather {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Default to single column */
+  gap: 55px;
+  padding-left: 15px; /* Adjust spacing as needed */
+}
+.forecastweather1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default to single column */
+  gap: 30px;
+  padding-left: 15px;
+  padding-top: 15px; /* Adjust spacing as needed */
+}
+.sevenDayforecast {
+  background-color: #ebecf0 !important;
+  padding: 15px;
+  border-radius: 23px;
+  width: 100%;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.sevenDayforecast h3 {
+  color: #909197;
+  font-size: 15px;
+  padding-top: 20px;
+}
+.threeDayforecast {
+  background-color: transparent !important;
+  padding: 15px;
+  border-radius: 23px;
+  width: 100%;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.threeDayforecast h3 {
+  color: #909197;
+  font-size: 15px;
+  padding-top: 10px;
+}
+.forcastdaysimage {
+  font-size: 14px;
+  width: 70%;
+}
+.forcastdaysimage img {
+  width: 34%;
+}
+.dateforcast {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  width: 15%;
+}
+.forecasttemplast {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  width: 10%;
+}
+.inputSearch {
+  width: 66% !important;
+}
+.fa-temperature-half {
+  color: #909197;
+  font-size: 15px;
+}
+.percent {
+  font-size: 27px;
+}
+.citiesdata {
+  width: 76%;
+  align-self: center;
+  font-size: 25px;
+  line-height: 20px;
+}
+.citytemp {
+  align-self: center;
+  color: #909197;
+  font-size: 26px;
+}
+.todaycityforecast1 {
+  background-color: #ebecf0 !important;
+  padding-left: 24px;
+  width: 100%;
+  margin-top: 15px;
+  border: 1px solid #189ffe;
+  border-radius: 23px;
+  cursor: pointer;
+}
+.weathermainicon {
+  height: 180px;
+  width: 180px;
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px !important;
+    margin-bottom: 20px;
+  }
+  .forecastweather {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-left: 0px; /* Three columns on mobile view */
+  }
+  .weathermainicon {
+    position: absolute;
+    top: 60px;
+    right: 23px;
+  }
+  .weatherTemp {
+    position: relative;
+  }
+  .sevenDayforecast {
+    margin-top: 10px !important;
+  }
+  .mainweather {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .colmd10 {
+    width: 100% !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .sevenDayforecast {
+    width: 93.5% !important;
+    margin-left: 10px;
+  }
+  .inputSearch {
+    width: 100% !important;
+  }
+  .citiesdata {
+    width: 50%;
+  }
+}

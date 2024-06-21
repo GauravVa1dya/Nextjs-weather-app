@@ -1,0 +1,77 @@
+/* styles/globals.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.navbarIcon {
+  color: #909197;
+  font-size: 19px;
+}
+.navbar-link:hover,
+.navbar-link:focus,
+.navbar-link:active {
+  color: #000000;
+  font-weight: bold;
+}
+.navbarIcon:hover,
+.navbarIcon:focus,
+.navbarIcon:active {
+  color: #000000;
+  font-weight: bold;
+}
+.navbar-link {
+  color: #909197;
+}
+nav {
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+nav a {
+  margin-bottom: 20px;
+  display: block;
+}
+.fa-umbrella {
+  color: blue;
+  font-size: 26px;
+  transform: rotate(20deg);
+  padding-bottom: 50px;
+  padding-top: 15px;
+}
+@media screen and (max-width: 600px) {
+  nav {
+    display: flex !important;
+    height: auto !important;
+    width: 100%;
+  }
+  .fa-umbrella {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-right: 15px !important;
+    padding-left: 10px;
+  }
+  nav a {
+    margin-bottom: 0px;
+    margin-right: 30px;
+  }
+}
+.iconname {
+  font-size: 15px;
+  color: #000;
+  text-decoration: none;
+}
+nav a {
+  text-decoration: none;
+}
