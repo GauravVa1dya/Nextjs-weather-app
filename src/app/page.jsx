@@ -9,6 +9,7 @@ import {
   faWind,
   faTint,
   faSun,
+  faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
@@ -39,6 +40,7 @@ const Home = () => {
   };
 
   async function fetchData(cityName) {
+    if (cityName.trim() === "") return;
     try {
       const response = await fetch(
         "http://localhost:3000/api/forecast?address=" + cityName
@@ -96,7 +98,7 @@ const Home = () => {
       }
     });
 
-    return dailyForecasts.slice(0, 7); // Ensure we only get 7 days
+    return dailyForecasts.slice(0, 7);
   }
 
   function getTodaysForecast(list) {
@@ -130,7 +132,10 @@ const Home = () => {
                     >
                       <div>
                         <h1>{weatherData.city.name}</h1>
-                        <p>Chance of Rain: {weatherData.list[0].pop * 100}%</p>
+                        <p>
+                          Chance of Rain:{" "}
+                          {(weatherData.list[0].pop * 100).toFixed(0)}%
+                        </p>
                         <h2>
                           {(weatherData.list[0].main.temp - 273.15).toFixed(0)}°
                         </h2>
@@ -140,8 +145,8 @@ const Home = () => {
                           className={`${styles.weathermainicon}`}
                           src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
-                          width={100} // Specify the width of the image
-                          height={100} // Specify the height of the image
+                          width={100}
+                          height={100}
                         />
                       </div>
                     </div>
@@ -157,7 +162,7 @@ const Home = () => {
                           const minutes = date.getMinutes();
                           const ampm = hours >= 12 ? "PM" : "AM";
                           hours = hours % 12;
-                          hours = hours ? hours : 12; // the hour '0' should be '12'
+                          hours = hours ? hours : 12;
                           const strTime = `${hours}:${
                             minutes < 10 ? "0" + minutes : minutes
                           } ${ampm}`;
@@ -174,8 +179,8 @@ const Home = () => {
                                 <Image
                                   src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                                   alt={forecast.weather[0].description}
-                                  width={100} // Specify the width of the image
-                                  height={100} // Specify the height of the image
+                                  width={100}
+                                  height={100}
                                 />
                               </div>
                               <div className={`${styles.forecasttemp}`}>
@@ -252,7 +257,7 @@ const Home = () => {
                             <div>
                               <div className="text-muted">Chance of rain</div>
                               <div className={`fw-bold ${styles.percent}`}>
-                                {weatherData.list[0].pop * 100}%
+                                {(weatherData.list[0].pop * 100).toFixed(0)}%
                               </div>
                             </div>
                           </div>
@@ -295,8 +300,8 @@ const Home = () => {
                           <Image
                             src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                             alt={forecast.weather[0].description}
-                            width={100} // Specify the width of the image
-                            height={100} // Specify the height of the image
+                            width={100}
+                            height={100}
                           />
                           {forecast.weather[0].description}
                         </div>
@@ -310,7 +315,17 @@ const Home = () => {
               </div>
             </>
           ) : (
-            <div>Loading...</div>
+            <div>
+              <h1>
+                <span className={`${styles.let1}`}>l</span>
+                <span className={`${styles.let2}`}>o</span>
+                <span className={`${styles.let3}`}>a</span>
+                <span className={`${styles.let4}`}>d</span>
+                <span className={`${styles.let5}`}>i</span>
+                <span className={`${styles.let6}`}>n</span>
+                <span className={`${styles.let7}`}>g</span>
+              </h1>
+            </div>
           )}
         </div>
       </div>
