@@ -43,7 +43,7 @@ const Home = () => {
     if (cityName.trim() === "") return;
     try {
       const response = await fetch(
-        "http://localhost:3000/api/forecast?address=" + cityName
+        "/api/forecast?address=" + cityName
       );
       const jsonData = (await response.json()).data;
       setWeatherData(jsonData);
@@ -56,7 +56,7 @@ const Home = () => {
   async function fetchDataByCoordinates(latitude, longitude) {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/forecast?lat=${latitude}&lon=${longitude}`
+        `/api/forecast?lat=${latitude}&lon=${longitude}`
       );
       const jsonData = (await response.json()).data;
       setWeatherData(jsonData);
