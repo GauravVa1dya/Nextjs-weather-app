@@ -10,6 +10,7 @@ import {
   faTint,
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 function getCurrentTime() {
   const currentDate = new Date();
@@ -210,9 +211,11 @@ const Cities = () => {
                   <article className="widget">
                     <div className={` ${styles.todaycityforecast1} mb-3`}>
                       <div className="d-flex">
-                        <img
+                        <Image
                           src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                         <h1 className={`${styles.citiesdata}`}>
                           {weatherData.city.name}
@@ -236,9 +239,11 @@ const Cities = () => {
                   <article className="widget">
                     <div className={` ${styles.todaycityforecast1} mb-3`}>
                       <div className="d-flex">
-                        <img
+                        <Image
                           src={`https://openweathermap.org/img/wn/${cityData.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                         <h1 className={`${styles.citiesdata}`}>
                           {cityData.city.name}
@@ -262,9 +267,11 @@ const Cities = () => {
                   <article className="widget">
                     <div className={` ${styles.todaycityforecast1} mb-3`}>
                       <div className="d-flex">
-                        <img
+                        <Image
                           src={`https://openweathermap.org/img/wn/${cityData1.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                         <h1 className={`${styles.citiesdata}`}>
                           {cityData1.city.name}
@@ -288,9 +295,11 @@ const Cities = () => {
                   <article className="widget">
                     <div className={` ${styles.todaycityforecast1} mb-3`}>
                       <div className="d-flex">
-                        <img
+                        <Image
                           src={`https://openweathermap.org/img/wn/${cityData2.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                         <h1 className={`${styles.citiesdata}`}>
                           {cityData2.city.name}
@@ -320,16 +329,18 @@ const Cities = () => {
                     >
                       <div>
                         <h1>{weatherData.city.name}</h1>
-                        <p>Chance of rain: 0%</p>
+                        <p>Chance of Rain: {weatherData.list[0].pop * 100}%</p>
                         <h2>
                           {(weatherData.list[0].main.temp - 273.15).toFixed(0)}°
                         </h2>
                       </div>
                       <div>
-                        <img
+                        <Image
                           className={`${styles.weathermainicon}`}
                           src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                       </div>
                     </div>
@@ -359,9 +370,11 @@ const Cities = () => {
                                 {strTime}
                               </div>
                               <div className={`${styles.forecastimage}`}>
-                                <img
+                                <Image
                                   src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                                   alt={forecast.weather[0].description}
+                                  width={100} // Specify the width of the image
+                                  height={100} // Specify the height of the image
                                 />
                               </div>
                               <div className={`${styles.forecasttemp}`}>
@@ -392,9 +405,11 @@ const Cities = () => {
                               {getDayName(forecast.dt_txt.split(" ")[0])}
                             </div>
                             <div className={`${styles.forcastdaysimage}`}>
-                              <img
+                              <Image
                                 src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                                 alt={forecast.weather[0].description}
+                                width={100} // Specify the width of the image
+                                height={100} // Specify the height of the image
                               />
                               {forecast.weather[0].description}
                             </div>

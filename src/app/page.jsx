@@ -10,6 +10,7 @@ import {
   faTint,
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 function getCurrentDate() {
   const currentDate = new Date();
@@ -135,10 +136,12 @@ const Home = () => {
                         </h2>
                       </div>
                       <div>
-                        <img
+                        <Image
                           className={`${styles.weathermainicon}`}
                           src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`}
                           alt="weather icon"
+                          width={100} // Specify the width of the image
+                          height={100} // Specify the height of the image
                         />
                       </div>
                     </div>
@@ -168,9 +171,11 @@ const Home = () => {
                                 {strTime}
                               </div>
                               <div className={`${styles.forecastimage}`}>
-                                <img
+                                <Image
                                   src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                                   alt={forecast.weather[0].description}
+                                  width={100} // Specify the width of the image
+                                  height={100} // Specify the height of the image
                                 />
                               </div>
                               <div className={`${styles.forecasttemp}`}>
@@ -287,9 +292,11 @@ const Home = () => {
                           {getDayName(forecast.dt_txt.split(" ")[0])}
                         </div>
                         <div className={`${styles.forcastdaysimage}`}>
-                          <img
+                          <Image
                             src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                             alt={forecast.weather[0].description}
+                            width={100} // Specify the width of the image
+                            height={100} // Specify the height of the image
                           />
                           {forecast.weather[0].description}
                         </div>
